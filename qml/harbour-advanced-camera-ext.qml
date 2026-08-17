@@ -10,6 +10,12 @@ ApplicationWindow {
         id: settings
     }
 
+    Binding {
+        target: micGain
+        property: "gain"
+        value: settings.global.micGain
+    }
+
     Rectangle {
         parent: window
         anchors.fill: parent

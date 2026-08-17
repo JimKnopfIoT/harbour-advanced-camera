@@ -297,6 +297,7 @@ Item {
                     console.log("loading...")
                     sldAudioBitrate.value = settings.global.audioBitrate;
                     sldVideoBitrate.value = settings.global.videoBitrate;
+                    sldMicGain.value = settings.global.micGain;
                 } else {
                     console.log("saving...")
                     settings.global.audioBitrate = sldAudioBitrate.value;
@@ -372,16 +373,41 @@ Item {
                     }
                     Slider {
                         id: sldVideoBitrate
-                        label: qsTr("Video Bitrate")
+                        label: qsTr("Video bitrate / compression")
                         width: parent.width
-                        minimumValue: 6400000
+                        minimumValue: 1000000
                         maximumValue: 32000000
-                        stepSize: 800000
-                        Text {
-                            text: sldVideoBitrate.value
-                            anchors.centerIn: parent
+                        stepSize: 500000
+                        //: %1 Mbit/s video bitrate, %2 resulting file size in MB per minute (video + audio)
+                        valueText: qsTr("%1 Mbit/s ≈ %2 MB/min")
+                            .arg((value / 1000000).toFixed(1))
+                            .arg(Math.round((value + sldAudioBitrate.value) * 60 / 8 / 1000000))
+                        SliderMarks {
+                            defaultValue: 12800000
+                            // ~0.065 bit per pixel and frame keeps the hardware H.264
+                            // encoder visually transparent: 1080p30 ≈ 4 Mbit/s
+                            recommendedValue: {
+                                var r = camera.videoRecorder.resolution
+                                var bits = r.width * r.height * settings.global.videoFrameRate * 0.065
+                                return Math.min(maximumValue, Math.max(minimumValue,
+                                                Math.round(bits / stepSize) * stepSize))
+                            }
                         }
-
+                    }
+                    ComboBox {
+                        id: frameRateBox
+                        property var rates: [25, 30]
+                        label: qsTr("Frame rate")
+                        currentIndex: Math.max(0, rates.indexOf(settings.global.videoFrameRate))
+                        menu: ContextMenu {
+                            Repeater {
+                                model: frameRateBox.rates
+                                delegate: MenuItem {
+                                    text: qsTr("%1 fps").arg(modelData)
+                                    onClicked: settings.global.videoFrameRate = modelData
+                                }
+                            }
+                        }
                     }
                     Slider {
                         id: sldAudioBitrate
@@ -389,12 +415,60 @@ Item {
                         width: parent.width
                         minimumValue: 64000
                         maximumValue: 320000
-                        stepSize: 8-000
-                        Text {
-                            text: sldAudioBitrate.value
-                            anchors.centerIn: parent
+                        stepSize: 8000
+                        valueText: qsTr("%1 kbit/s").arg(Math.round(value / 1000))
+                        SliderMarks { defaultValue: 128000; recommendedValue: 96000 }
+                    }
+                    Slider {
+                        id: sldMicGain
+                        label: qsTr("Microphone gain")
+                        width: parent.width
+                        minimumValue: 50
+                        maximumValue: 600
+                        stepSize: 25
+                        //: %1 gain in percent, %2 the same in decibels
+                        valueText: qsTr("%1 % (%2 dB)")
+                            .arg(value)
+                            .arg((20 * Math.log(value / 100) / Math.LN10).toFixed(1))
+                        onValueChanged: {
+                            if (loadingComplete && panelGeneral.visible) {
+                                settings.global.micGain = value
+                            }
                         }
-
+                        SliderMarks { defaultValue: 100; recommendedValue: 200 }
+                    }
+                    Label {
+                        width: parent.width
+                        wrapMode: Text.WordWrap
+                        font.pixelSize: Theme.fontSizeExtraSmall
+                        color: Theme.secondaryColor
+                        text: micGain.error !== ""
+                              ? micGain.error
+                              : (micGain.recording
+                                 //: %1 gain in percent currently applied by PulseAudio to the running recording
+                                 ? qsTr("Recording at %1 %").arg(micGain.liveGain)
+                                 : qsTr("100 % is the system default. Raise it if videos are too quiet."))
+                    }
+                    Row {
+                        spacing: Theme.paddingMedium
+                        x: Theme.horizontalPageMargin
+                        Repeater {
+                            model: [{ "c": Theme.rgba(Theme.secondaryColor, 0.7), "t": qsTr("default") },
+                                    { "c": "#3fc46a", "t": qsTr("recommended") }]
+                            Row {
+                                spacing: Theme.paddingSmall
+                                Rectangle {
+                                    width: Theme.dp(2); height: Theme.paddingSmall
+                                    radius: width / 2; color: modelData.c
+                                    anchors.verticalCenter: parent.verticalCenter
+                                }
+                                Label {
+                                    text: modelData.t
+                                    font.pixelSize: Theme.fontSizeExtraSmall
+                                    color: Theme.secondaryColor
+                                }
+                            }
+                        }
                     }
                     TextSwitch{
                         id: locationMetadataSwitch
@@ -406,6 +480,15 @@ Item {
                         onCheckedChanged: {
                             settings.global.locationMetadata = checked;
                         }
+                    }
+
+                    TextSwitch {
+                        id: showHistogramSwitch
+                        width: parent.width
+                        checked: settings.global.showHistogram
+                        text: qsTr("Show histogram")
+                        description: qsTr("Live RGB/luma histogram; edge bars mark clipping")
+                        onCheckedChanged: settings.global.showHistogram = checked
                     }
 
                     TextSwitch{

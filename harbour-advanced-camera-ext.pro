@@ -10,13 +10,16 @@
 #   - translation filenames have to be changed
 
 # The name of your application
-TARGET = harbour-advanced-camera
+TARGET = harbour-advanced-camera-ext
 
 CONFIG += sailfishapp
 
 QT += multimedia
 
-SOURCES += src/harbour-advanced-camera.cpp \
+CONFIG += link_pkgconfig
+PKGCONFIG += sailfishapp libpulse glib-2.0 gstreamer-1.0
+
+SOURCES += src/harbour-advanced-camera-ext.cpp \
     src/deviceinfo.cpp \
     src/effectsmodel.cpp \
     src/exifmodel.cpp \
@@ -29,7 +32,10 @@ SOURCES += src/harbour-advanced-camera.cpp \
     src/flashmodel.cpp \
     src/fsoperations.cpp \
     src/resourcehandler.cpp \
-    src/storagemodel.cpp
+    src/storagemodel.cpp \
+    src/micgain.cpp \
+    src/histogramitem.cpp \
+    src/videojoiner.cpp
 
 DISTFILES += \
     README.md \
@@ -42,12 +48,14 @@ DISTFILES += \
     qml/components/AboutMedia.qml \
     qml/pages/AboutImage.qml \
     qml/pages/AboutVideo.qml \
-    rpm/harbour-advanced-camera.changes.run.in \
-    rpm/harbour-advanced-camera.spec \
+    rpm/harbour-advanced-camera-ext.changes.run.in \
+    rpm/harbour-advanced-camera-ext.spec \
     translations/*.ts \
-    harbour-advanced-camera.desktop \
-    qml/harbour-advanced-camera.qml \
+    harbour-advanced-camera-ext.desktop \
+    qml/harbour-advanced-camera-ext.qml \
     qml/components/DockedListView.qml \
+    qml/components/SegmentedRecording.qml \
+    qml/components/SliderMarks.qml \
     qml/components/IconSwitch.qml \
     qml/components/RoundButton.qml \
     qml/cover/CoverPage.qml \
@@ -67,12 +75,12 @@ CONFIG += sailfishapp_i18n
 # planning to localize your app, remember to comment out the
 # following TRANSLATIONS line. And also do not forget to
 # modify the localized app name in the the .desktop file.
-TRANSLATIONS += translations/harbour-advanced-camera-de.ts \
-                translations/harbour-advanced-camera-es.ts \
-                translations/harbour-advanced-camera-fi.ts \
-                translations/harbour-advanced-camera-fr.ts \
-                translations/harbour-advanced-camera-sv.ts \
-                translations/harbour-advanced-camera-zh_CN.ts
+TRANSLATIONS += translations/harbour-advanced-camera-ext-de.ts \
+                translations/harbour-advanced-camera-ext-es.ts \
+                translations/harbour-advanced-camera-ext-fi.ts \
+                translations/harbour-advanced-camera-ext-fr.ts \
+                translations/harbour-advanced-camera-ext-sv.ts \
+                translations/harbour-advanced-camera-ext-zh_CN.ts
 
 HEADERS += \
     src/effectsmodel.h \
@@ -86,6 +94,9 @@ HEADERS += \
     src/flashmodel.h \
     src/fsoperations.h \
     src/resourcehandler.h \
-    src/storagemodel.h
+    src/storagemodel.h \
+    src/micgain.h \
+    src/histogramitem.h \
+    src/videojoiner.h
 
 LIBS += -ldl

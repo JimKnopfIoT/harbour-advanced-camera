@@ -12,7 +12,7 @@ Item {
 
     ConfigurationGroup {
         id: globalSettings
-        path: "/uk/co/piggz/harbour-advanced-camera"
+        path: "/uk/co/piggz/harbour-advanced-camera-ext"
         property int cameraCount: 0 //default to 0 and get populated on startup
         property string cameraId: "0"
         property string captureMode: "image"
@@ -20,6 +20,9 @@ Item {
         property string gridMode: "none"
         property int videoBitrate: 12800000
         property int audioBitrate: 128000
+        property int micGain: 100
+        property int videoFrameRate: 30
+        property bool showHistogram: false
         property string storagePath: StandardPaths.home
         property bool locationMetadata: true
         property bool enableWideCameraButtons: true

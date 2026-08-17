@@ -56,7 +56,15 @@ Page {
     }
 
     DisplayBlanking {
-        preventBlanking: camera.videoRecorder.recorderState === CameraRecorder.RecordingState
+        preventBlanking: camera.videoRecorder.recorderState === CameraRecorder.RecordingState || recording.paused
+    }
+
+    SegmentedRecording {
+        id: recording
+        recorder: camera.videoRecorder
+        joiner: videoJoiner
+        fs: fsOperations
+        onFinished: galleryModel.append({ "filePath": path, "isVideo": true })
     }
 
     PositionSource {
@@ -192,7 +200,7 @@ Page {
             audioBitRate: settings.global.audioBitrate
             audioChannels: 1
             audioCodec: "audio/mpeg, mpegversion=(int)4"
-            frameRate: 30
+            frameRate: settings.global.videoFrameRate
             videoCodec: "video/x-h264"
             mediaContainer: "video/quicktime, variant=(string)iso"
             videoEncodingMode: CameraRecorder.AverageBitRateEncoding
@@ -201,17 +209,6 @@ Page {
             onRecorderStateChanged: {
                 if (camera.videoRecorder.recorderState === CameraRecorder.StoppedState) {
                     console.log("saved to: " + camera.videoRecorder.outputLocation)
-                }
-            }
-
-            onRecorderStatusChanged: {
-                if (camera.videoRecorder.recorderStatus === CameraRecorder.FinalizingStatus) {
-                    var path = camera.videoRecorder.outputLocation.toString()
-                    path = path.replace(/^(file:\/{2})/, "")
-                    galleryModel.append({
-                                            "filePath": path,
-                                            "isVideo": true
-                                        })
                 }
             }
 
@@ -234,6 +231,12 @@ Page {
                 animFlash.start()
                 _focusAndSnap = false
             }
+        }
+
+        onCameraStateChanged: {
+            // Camera going away while paused (mode switch, app hidden)
+            if (camera.cameraState !== Camera.ActiveState && recording.paused)
+                recording.stop()
         }
 
         onCameraStatusChanged: {
@@ -349,6 +352,20 @@ Page {
             onClicked: doShutter()
         }
 
+        RoundButton {
+            id: btnPause
+            visible: settings.global.captureMode === "video"
+                     && (recording.recording || recording.paused)
+            enabled: visible && !recording.pausing
+            anchors.right: btnCapture.left
+            anchors.rightMargin: Theme.paddingLarge
+            anchors.verticalCenter: btnCapture.verticalCenter
+            size: Theme.itemSizeMedium
+            rotation: page.controlsRotation
+            image: recording.paused ? "image://theme/icon-m-play" : "image://theme/icon-m-pause"
+            onClicked: recording.paused ? recording.resume() : recording.pause()
+        }
+
 
         RoundButton {
             id: teleLense
@@ -361,7 +378,7 @@ Page {
             anchors.bottom: wideLense.top
             anchors.bottomMargin: Theme.paddingSmall
             rotation: page.controlsRotation
-            visible: checkIfCamExists("1") && (camera.videoRecorder.recorderStatus !== CameraRecorder.RecordingStatus) && settings.global.cameraCount > 3 && settings.global.enableWideCameraButtons
+            visible: checkIfCamExists("1") && (camera.videoRecorder.recorderStatus !== CameraRecorder.RecordingStatus) && !recording.paused && settings.global.cameraCount > 3 && settings.global.enableWideCameraButtons
         }
         RoundButton {
             id: wideLense
@@ -373,7 +390,7 @@ Page {
             anchors.rightMargin: Theme.paddingLarge * 1.337
             anchors.verticalCenter: btnCapture.verticalCenter
             rotation: page.controlsRotation
-            visible: checkIfCamExists("0") && (camera.videoRecorder.recorderStatus !== CameraRecorder.RecordingStatus) && settings.global.cameraCount > 3 && settings.global.enableWideCameraButtons
+            visible: checkIfCamExists("0") && (camera.videoRecorder.recorderStatus !== CameraRecorder.RecordingStatus) && !recording.paused && settings.global.cameraCount > 3 && settings.global.enableWideCameraButtons
         }
         RoundButton {
             id: uwideLense
@@ -386,7 +403,7 @@ Page {
             anchors.top: wideLense.bottom
             anchors.topMargin: Theme.paddingSmall
             rotation: page.controlsRotation
-            visible: checkIfCamExists("2") && (camera.videoRecorder.recorderStatus !== CameraRecorder.RecordingStatus) && settings.global.cameraCount > 3 && settings.global.enableWideCameraButtons
+            visible: checkIfCamExists("2") && (camera.videoRecorder.recorderStatus !== CameraRecorder.RecordingStatus) && !recording.paused && settings.global.cameraCount > 3 && settings.global.enableWideCameraButtons
         }
 
 
@@ -468,9 +485,11 @@ Page {
                 Label {
                     id: lblRecordTime
                     visible: settings.global.captureMode === "video"
-                    color: Theme.lightPrimaryColor
+                    color: recording.paused ? Theme.secondaryHighlightColor : Theme.lightPrimaryColor
                     //text: Qt.formatDateTime(new Date(camera.videoRecorder.duration), "hh:mm:ss") //Doest work as return 01:00:00 for 0
-                    text: msToTime(camera.videoRecorder.duration)
+                    text: (recording.joining ? qsTr("Joining…") + " "
+                                             : (recording.paused ? qsTr("Paused") + " " : ""))
+                          + msToTime(recording.elapsed)
                 }
                 Item {
                     height: 1
@@ -529,6 +548,41 @@ Page {
                 pageStack.push(Qt.resolvedUrl("GalleryUI.qml"), {
                                    "fileList": galleryModel
                                })
+            }
+        }
+
+        // Square box: the histogram rotates with the controls and must stay
+        // inside the corner in landscape.
+        Item {
+            id: histogramBox
+            width: Theme.itemSizeLarge * 2.2
+            height: width
+            visible: settings.global.showHistogram
+            anchors.top: btnGallery.bottom
+            anchors.topMargin: Theme.paddingMedium
+            anchors.right: parent.right
+            anchors.rightMargin: Theme.paddingMedium
+
+            HistogramItem {
+                id: histogram
+                width: parent.width
+                height: width * 0.45
+                anchors.centerIn: parent
+                rotation: page.controlsRotation
+                opacity: 0.9
+
+                Timer {
+                    interval: 250
+                    repeat: true
+                    running: settings.global.showHistogram && Qt.application.active
+                             && camera.cameraStatus === Camera.ActiveStatus
+                    onTriggered: {
+                        captureView.grabToImage(function (result) {
+                            histogram.updateFromGrab(result)
+                        }, Qt.size(160, 90))
+                    }
+                    onRunningChanged: if (!running) histogram.clear()
+                }
             }
         }
 
@@ -959,20 +1013,19 @@ Page {
                 }
             }
         } else {
-            if (camera.videoRecorder.recorderStatus === CameraRecorder.RecordingStatus) {
-                camera.videoRecorder.stop()
-            } else {
-                camera.videoRecorder.outputLocation = fsOperations.writableLocation(
-                            "video",
-                            settings.global.storagePath) + "/VID_" + Qt.formatDateTime(
-                            new Date(), "yyyyMMdd_hhmmss") + ".mp4"
+            if (recording.recording || recording.paused) {
+                recording.stop()
+            } else if (!recording.joining) {
                 if ((camera.focus.focusMode === Camera.FocusAuto
                      && !_manualModeSelected)
                         || camera.focus.focusMode === Camera.FocusMacro
                         || camera.focus.focusMode === Camera.FocusContinuous) {
                     camera.unlock()
                 }
-                camera.videoRecorder.record()
+                recording.start(fsOperations.writableLocation(
+                                    "video",
+                                    settings.global.storagePath) + "/VID_" + Qt.formatDateTime(
+                                    new Date(), "yyyyMMdd_hhmmss") + ".mp4")
             }
         }
     }
@@ -1003,7 +1056,7 @@ Page {
         if (camera.captureMode === Camera.CaptureStillImage) {
             return "image://theme/icon-camera-shutter"
         } else {
-            if (camera.videoRecorder.recorderStatus === CameraRecorder.RecordingStatus) {
+            if (recording.recording || recording.paused) {
                 return "image://theme/icon-camera-video-shutter-off"
             } else {
                 return "image://theme/icon-camera-video-shutter-on"

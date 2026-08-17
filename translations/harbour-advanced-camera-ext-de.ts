@@ -1,45 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="fr_FR">
+<TS version="2.1" language="de_DE">
 <context>
     <name>CameraUI</name>
     <message>
         <source>Camera: </source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Joining…</source>
+        <translation>Füge zusammen…</translation>
+    </message>
+    <message>
+        <source>Paused</source>
+        <translation>Pause</translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
-        <source>Advanced Camera</source>
-        <translation>Advanced Camera</translation>
+        <source>Advanced Camera Ext</source>
+        <translation>Advanced Camera Ext</translation>
     </message>
 </context>
 <context>
     <name>EffectsModel</name>
     <message>
         <source>None</source>
-        <translation>Aucun</translation>
+        <translation>Keinen</translation>
     </message>
     <message>
         <source>Aqua</source>
-        <translation>Eau</translation>
+        <translation>Wasser</translation>
     </message>
     <message>
         <source>Blackboard</source>
-        <translation>Tableau noir</translation>
+        <translation>Blackboard</translation>
     </message>
     <message>
         <source>Grayscale</source>
-        <translation>Gris</translation>
+        <translation>Graustufen</translation>
     </message>
     <message>
         <source>Negative</source>
-        <translation>Négatif</translation>
+        <translation>Negativ</translation>
     </message>
     <message>
         <source>Posterize</source>
-        <translation>Postériser</translation>
+        <translation>Posterisieren</translation>
     </message>
     <message>
         <source>Sepia</source>
@@ -47,66 +55,58 @@
     </message>
     <message>
         <source>Solarize</source>
-        <translation>Solariser</translation>
+        <translation>Solarisieren</translation>
     </message>
     <message>
         <source>Whiteboard</source>
-        <translation>Tableau blanc</translation>
+        <translation>Whiteboard</translation>
     </message>
     <message>
         <source>Emboss</source>
-        <translation>Relief</translation>
+        <translation>Prägen</translation>
     </message>
     <message>
         <source>Sketch</source>
-        <translation>Esquisse</translation>
+        <translation>Skizzieren</translation>
     </message>
     <message>
         <source>Neon</source>
-        <translation>Néon</translation>
+        <translation>Neon</translation>
     </message>
 </context>
 <context>
     <name>ExposureModel</name>
     <message>
         <source>Automatic Scene Detection</source>
-        <translation>Automatique</translation>
-    </message>
-    <message>
-        <source>Action</source>
-        <translation>Action</translation>
-    </message>
-    <message>
-        <source>Off</source>
-        <translation>Désactivé</translation>
+        <translation>Automatische Szenenerkennung</translation>
     </message>
     <message>
         <source>Augmented Reality</source>
-        <translation>Réalité augmentée</translation>
+        <translation>Erweiterte Realität</translation>
     </message>
     <message>
         <source>Backlight</source>
-        <translation>Contre-jour</translation>
+        <translation>Hintergrundbeleuchtung</translation>
     </message>
     <message>
         <source>Barcode</source>
-        <translation>Code-barres</translation>
+        <translation>Strichcode</translation>
     </message>
     <message>
         <source>Beach</source>
-        <translation>Plage</translation>
+        <translation>Strand</translation>
     </message>
     <message>
         <source>Candlelight</source>
-        <translation>Bougie</translation>
+        <translation>Kerzenlicht</translation>
     </message>
     <message>
         <source>Fireworks</source>
-        <translation>Feu d&apos;artifice</translation>
+        <translation>Feuerwerk</translation>
     </message>
     <message>
         <source>Flowers</source>
-        <translation>Fleurs</translation>
+        <translation>Blumen</translation>
     </message>
     <message>
         <source>HDR</source>
@@ -114,147 +114,155 @@
     </message>
     <message>
         <source>Landscape</source>
-        <translation>Paysage</translation>
+        <translation>Landschaft</translation>
     </message>
     <message>
         <source>Large Aperture</source>
-        <translation>Grande ouverture</translation>
+        <translation>Große Blende</translation>
     </message>
     <message>
         <source>Night</source>
-        <translation>Nuit</translation>
+        <translation>Nacht</translation>
     </message>
     <message>
         <source>Night Portrait</source>
-        <translation>Portrait de nuit</translation>
+        <translation>Nachtporträt</translation>
     </message>
     <message>
         <source>Party</source>
-        <translation>Fête</translation>
+        <translation>Party</translation>
     </message>
     <message>
         <source>Portrait</source>
-        <translation>Portrait</translation>
+        <translation>Porträt</translation>
     </message>
     <message>
         <source>Small Aperture</source>
-        <translation>Petite ouverture</translation>
+        <translation>Kleine Blende</translation>
     </message>
     <message>
         <source>Snow</source>
-        <translation>Neige</translation>
+        <translation>Schnee</translation>
     </message>
     <message>
         <source>Sports</source>
-        <translation>Sports</translation>
+        <translation>Sport</translation>
     </message>
     <message>
         <source>Spotlight</source>
-        <translation>Projecteur</translation>
+        <translation>Scheinwerfer</translation>
     </message>
     <message>
         <source>Steady Photo</source>
-        <translation>Photo stable</translation>
+        <translation>Stetiges Foto</translation>
     </message>
     <message>
         <source>Sunset</source>
-        <translation>Coucher de soleil</translation>
+        <translation>Sonnenuntergang</translation>
     </message>
     <message>
         <source>Theatre</source>
-        <translation>Théâtre</translation>
+        <translation>Theater</translation>
+    </message>
+    <message>
+        <source>Action</source>
+        <translation>Aktion</translation>
+    </message>
+    <message>
+        <source>Off</source>
+        <translation>Aus</translation>
     </message>
 </context>
 <context>
     <name>FlashModel</name>
     <message>
         <source>Unknown</source>
-        <translation>Inconnu</translation>
+        <translation>Unbekannt</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation>Automatique</translation>
+        <translation>Automatisch</translation>
     </message>
     <message>
         <source>Off</source>
-        <translation>Désactivé</translation>
+        <translation>Aus</translation>
     </message>
     <message>
         <source>On</source>
-        <translation>Activé</translation>
+        <translation>Ein</translation>
     </message>
     <message>
         <source>Red Eye Reduction</source>
-        <translation>Réduction des yeux rouges</translation>
+        <translation>Rote-Augen-Reduzierung</translation>
     </message>
     <message>
         <source>Fill</source>
-        <translation>Remplissage</translation>
+        <translation>Füllen</translation>
     </message>
     <message>
         <source>Torch</source>
-        <translation>Torche</translation>
+        <translation>Fackel</translation>
     </message>
     <message>
         <source>Video Light</source>
-        <translation>Torche vidéo</translation>
+        <translation>Videolicht</translation>
     </message>
     <message>
         <source>Slow Sync Front Curtain</source>
-        <translation>Sync. 1er rideau</translation>
+        <translation>Langsamer Sync Vorhang</translation>
     </message>
     <message>
         <source>Slow Sync Rear Curtain</source>
-        <translation>Sync. 2ème rideau</translation>
+        <translation>Slow Sync Hinterer Vorhang</translation>
     </message>
     <message>
         <source>Manual</source>
-        <translation>Manuel</translation>
+        <translation>Manuell</translation>
     </message>
 </context>
 <context>
     <name>FocusModel</name>
     <message>
-        <source>Unknown</source>
-        <translation>Inconnu</translation>
-    </message>
-    <message>
         <source>Manual</source>
-        <translation>Manuel</translation>
+        <translation>Manuell</translation>
     </message>
     <message>
         <source>Hyperfocal</source>
-        <translation>Hyperfocale</translation>
+        <translation>Hyperfokal</translation>
     </message>
     <message>
         <source>Infinity</source>
-        <translation>Infini</translation>
+        <translation>Unendlichkeit</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation>Automatique</translation>
+        <translation>Automatisch</translation>
     </message>
     <message>
         <source>Continuous</source>
-        <translation>Continu</translation>
+        <translation>Kontinuierlich</translation>
     </message>
     <message>
         <source>Macro</source>
-        <translation>Macro</translation>
+        <translation>Makro</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>Unbekannt</translation>
     </message>
 </context>
 <context>
     <name>GalleryUI</name>
     <message>
         <source>Deleting %1</source>
-        <translation>Suppression de %1</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>IsoModel</name>
     <message>
         <source>Auto ISO</source>
-        <translation>ISO automatique</translation>
+        <translation>Automatisches ISO</translation>
     </message>
 </context>
 <context>
@@ -265,7 +273,7 @@
     </message>
     <message>
         <source>None</source>
-        <translation type="unfinished">Aucun</translation>
+        <translation type="unfinished">Keinen</translation>
     </message>
     <message>
         <source>Thirds</source>
@@ -277,10 +285,6 @@
     </message>
     <message>
         <source>Grid:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Video Bitrate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -303,59 +307,114 @@
         <source>Display manual controls</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Video bitrate / compression</source>
+        <translation>Video-Bitrate / Kompression</translation>
+    </message>
+    <message>
+        <source>%1 Mbit/s ≈ %2 MB/min</source>
+        <extracomment>%1 Mbit/s video bitrate, %2 resulting file size in MB per minute (video + audio)</extracomment>
+        <translation>%1 Mbit/s ≈ %2 MB/min</translation>
+    </message>
+    <message>
+        <source>%1 kbit/s</source>
+        <translation>%1 kbit/s</translation>
+    </message>
+    <message>
+        <source>Microphone gain</source>
+        <translation>Mikrofonverstärkung</translation>
+    </message>
+    <message>
+        <source>%1 % (%2 dB)</source>
+        <extracomment>%1 gain in percent, %2 the same in decibels</extracomment>
+        <translation>%1 % (%2 dB)</translation>
+    </message>
+    <message>
+        <source>Recording at %1 %</source>
+        <extracomment>%1 gain in percent currently applied by PulseAudio to the running recording</extracomment>
+        <translation>Aufnahme läuft mit %1 %</translation>
+    </message>
+    <message>
+        <source>100 % is the system default. Raise it if videos are too quiet.</source>
+        <translation>100 % ist der Systemstandard. Erhöhen, wenn Videos zu leise sind.</translation>
+    </message>
+    <message>
+        <source>Frame rate</source>
+        <translation>Bildrate</translation>
+    </message>
+    <message>
+        <source>%1 fps</source>
+        <translation>%1 fps</translation>
+    </message>
+    <message>
+        <source>Show histogram</source>
+        <translation>Histogramm anzeigen</translation>
+    </message>
+    <message>
+        <source>Live RGB/luma histogram; edge bars mark clipping</source>
+        <translation>Live-RGB/Luma-Histogramm; Balken am Rand markieren Clipping</translation>
+    </message>
+    <message>
+        <source>default</source>
+        <translation>Standard</translation>
+    </message>
+    <message>
+        <source>recommended</source>
+        <translation>empfohlen</translation>
+    </message>
 </context>
 <context>
     <name>StorageModel</name>
     <message>
         <source>Internal storage</source>
-        <translation>Stockage interne</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>WbModel</name>
     <message>
         <source>Auto</source>
-        <translation>Automatique</translation>
+        <translation>Automatisch</translation>
     </message>
     <message>
         <source>Manual</source>
-        <translation>Manuel</translation>
+        <translation>Manuell</translation>
     </message>
     <message>
         <source>Sunlight</source>
-        <translation>Lumière du jour</translation>
+        <translation>Sonnenlicht</translation>
     </message>
     <message>
         <source>Cloudy</source>
-        <translation>Nuageux</translation>
+        <translation>Bewölkt</translation>
     </message>
     <message>
         <source>Shade</source>
-        <translation>Ombre</translation>
+        <translation>Schatten</translation>
     </message>
     <message>
         <source>Tungsten</source>
-        <translation>Tungstène</translation>
-    </message>
-    <message>
-        <source>Fluorescent</source>
-        <translation>Fluorescent</translation>
+        <translation>Wolfram</translation>
     </message>
     <message>
         <source>Flash</source>
-        <translation>Flash</translation>
+        <translation>Blitz</translation>
     </message>
     <message>
         <source>Sunset</source>
-        <translation>Coucher de soleil</translation>
+        <translation>Sonnenuntergang</translation>
     </message>
     <message>
         <source>Warm Fluorescent</source>
-        <translation>Fluorescent chaud</translation>
+        <translation>Warmes fluoreszierendes</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation>Inconnu</translation>
+        <translation>Unbekannt</translation>
+    </message>
+    <message>
+        <source>Fluorescent</source>
+        <translation>Fluoreszierendes</translation>
     </message>
 </context>
 </TS>

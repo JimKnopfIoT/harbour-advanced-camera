@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
+<TS version="2.1" language="fi_FI">
 <context>
     <name>CameraUI</name>
     <message>
         <source>Camera: </source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Joining…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Paused</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
-        <source>Advanced Camera</source>
+        <source>Advanced Camera Ext</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -19,242 +27,242 @@
     <name>EffectsModel</name>
     <message>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Ei mitään</translation>
     </message>
     <message>
         <source>Aqua</source>
-        <translation type="unfinished"></translation>
+        <translation>Aqua</translation>
     </message>
     <message>
         <source>Blackboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Liitutaulu</translation>
     </message>
     <message>
         <source>Grayscale</source>
-        <translation type="unfinished"></translation>
+        <translation>Harmaasävy</translation>
     </message>
     <message>
         <source>Negative</source>
-        <translation type="unfinished"></translation>
+        <translation>Negatiivi</translation>
     </message>
     <message>
         <source>Posterize</source>
-        <translation type="unfinished"></translation>
+        <translation>Posterisointi</translation>
     </message>
     <message>
         <source>Sepia</source>
-        <translation type="unfinished"></translation>
+        <translation>Seepia</translation>
     </message>
     <message>
         <source>Solarize</source>
-        <translation type="unfinished"></translation>
+        <translation>Solarisointi</translation>
     </message>
     <message>
         <source>Whiteboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Valkotaulu</translation>
     </message>
     <message>
         <source>Emboss</source>
-        <translation type="unfinished"></translation>
+        <translation>Kohokuvio</translation>
     </message>
     <message>
         <source>Sketch</source>
-        <translation type="unfinished"></translation>
+        <translation>Luonnos</translation>
     </message>
     <message>
         <source>Neon</source>
-        <translation type="unfinished"></translation>
+        <translation>Neon</translation>
     </message>
 </context>
 <context>
     <name>ExposureModel</name>
     <message>
         <source>Automatic Scene Detection</source>
-        <translation type="unfinished"></translation>
+        <translation>Automaattinen kohtauksen tunnistus</translation>
     </message>
     <message>
         <source>Augmented Reality</source>
-        <translation type="unfinished"></translation>
+        <translation>Lisätty todellisuus</translation>
     </message>
     <message>
         <source>Backlight</source>
-        <translation type="unfinished"></translation>
+        <translation>Vastavalo</translation>
     </message>
     <message>
         <source>Barcode</source>
-        <translation type="unfinished"></translation>
+        <translation>Viivakoodi</translation>
     </message>
     <message>
         <source>Beach</source>
-        <translation type="unfinished"></translation>
+        <translation>Ranta</translation>
     </message>
     <message>
         <source>Candlelight</source>
-        <translation type="unfinished"></translation>
+        <translation>Kynttilänvalo</translation>
     </message>
     <message>
         <source>Fireworks</source>
-        <translation type="unfinished"></translation>
+        <translation>Ilotulitus</translation>
     </message>
     <message>
         <source>Flowers</source>
-        <translation type="unfinished"></translation>
+        <translation>Kukat</translation>
     </message>
     <message>
         <source>HDR</source>
-        <translation type="unfinished"></translation>
+        <translation>HDR</translation>
     </message>
     <message>
         <source>Landscape</source>
-        <translation type="unfinished"></translation>
+        <translation>Maisema</translation>
     </message>
     <message>
         <source>Large Aperture</source>
-        <translation type="unfinished"></translation>
+        <translation>Suuri aukko</translation>
     </message>
     <message>
         <source>Night</source>
-        <translation type="unfinished"></translation>
+        <translation>Yö</translation>
     </message>
     <message>
         <source>Night Portrait</source>
-        <translation type="unfinished"></translation>
+        <translation>Yömuotokuva</translation>
     </message>
     <message>
         <source>Party</source>
-        <translation type="unfinished"></translation>
+        <translation>Juhlat</translation>
     </message>
     <message>
         <source>Portrait</source>
-        <translation type="unfinished"></translation>
+        <translation>Muotokuva</translation>
     </message>
     <message>
         <source>Small Aperture</source>
-        <translation type="unfinished"></translation>
+        <translation>Pieni aukko</translation>
     </message>
     <message>
         <source>Snow</source>
-        <translation type="unfinished"></translation>
+        <translation>Lumi</translation>
     </message>
     <message>
         <source>Sports</source>
-        <translation type="unfinished"></translation>
+        <translation>Urheilu</translation>
     </message>
     <message>
         <source>Spotlight</source>
-        <translation type="unfinished"></translation>
+        <translation>Kohdevalo</translation>
     </message>
     <message>
         <source>Steady Photo</source>
-        <translation type="unfinished"></translation>
+        <translation>Vakaa kuva</translation>
     </message>
     <message>
         <source>Sunset</source>
-        <translation type="unfinished"></translation>
+        <translation>Auringonlasku</translation>
     </message>
     <message>
         <source>Theatre</source>
-        <translation type="unfinished"></translation>
+        <translation>Teatteri</translation>
     </message>
     <message>
         <source>Action</source>
-        <translation type="unfinished"></translation>
+        <translation>Toiminta</translation>
     </message>
     <message>
         <source>Off</source>
-        <translation type="unfinished"></translation>
+        <translation>Pois</translation>
     </message>
 </context>
 <context>
     <name>FlashModel</name>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Tuntematon</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Auto</translation>
     </message>
     <message>
         <source>Off</source>
-        <translation type="unfinished"></translation>
+        <translation>Pois</translation>
     </message>
     <message>
         <source>On</source>
-        <translation type="unfinished"></translation>
+        <translation>Päällä</translation>
     </message>
     <message>
         <source>Red Eye Reduction</source>
-        <translation type="unfinished"></translation>
+        <translation>Punasilmäisyyden poisto</translation>
     </message>
     <message>
         <source>Fill</source>
-        <translation type="unfinished"></translation>
+        <translation>Täyttö</translation>
     </message>
     <message>
         <source>Torch</source>
-        <translation type="unfinished"></translation>
+        <translation>Soihtu</translation>
     </message>
     <message>
         <source>Video Light</source>
-        <translation type="unfinished"></translation>
+        <translation>Videovalo</translation>
     </message>
     <message>
         <source>Slow Sync Front Curtain</source>
-        <translation type="unfinished"></translation>
+        <translation>Etuverhon hidas synkronointi</translation>
     </message>
     <message>
         <source>Slow Sync Rear Curtain</source>
-        <translation type="unfinished"></translation>
+        <translation>Takaverhon hidas synkronointi</translation>
     </message>
     <message>
         <source>Manual</source>
-        <translation type="unfinished"></translation>
+        <translation>Manuaalinen</translation>
     </message>
 </context>
 <context>
     <name>FocusModel</name>
     <message>
         <source>Manual</source>
-        <translation type="unfinished"></translation>
+        <translation>Manuaalinen</translation>
     </message>
     <message>
         <source>Hyperfocal</source>
-        <translation type="unfinished"></translation>
+        <translation>Hyperfokaalinen</translation>
     </message>
     <message>
         <source>Infinity</source>
-        <translation type="unfinished"></translation>
+        <translation>Ääretön</translation>
     </message>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Auto</translation>
     </message>
     <message>
         <source>Continuous</source>
-        <translation type="unfinished"></translation>
+        <translation>Jatkuva</translation>
     </message>
     <message>
         <source>Macro</source>
-        <translation type="unfinished"></translation>
+        <translation>Makro</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Tuntematon</translation>
     </message>
 </context>
 <context>
     <name>GalleryUI</name>
     <message>
         <source>Deleting %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Poistetaan %1</translation>
     </message>
 </context>
 <context>
     <name>IsoModel</name>
     <message>
         <source>Auto ISO</source>
-        <translation type="unfinished"></translation>
+        <translation>Auto ISO</translation>
     </message>
 </context>
 <context>
@@ -265,7 +273,7 @@
     </message>
     <message>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ei mitään</translation>
     </message>
     <message>
         <source>Thirds</source>
@@ -277,10 +285,6 @@
     </message>
     <message>
         <source>Grid:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Video Bitrate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -303,6 +307,61 @@
         <source>Display manual controls</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Video bitrate / compression</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 Mbit/s ≈ %2 MB/min</source>
+        <extracomment>%1 Mbit/s video bitrate, %2 resulting file size in MB per minute (video + audio)</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 kbit/s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Microphone gain</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 % (%2 dB)</source>
+        <extracomment>%1 gain in percent, %2 the same in decibels</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recording at %1 %</source>
+        <extracomment>%1 gain in percent currently applied by PulseAudio to the running recording</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>100 % is the system default. Raise it if videos are too quiet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Frame rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 fps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show histogram</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Live RGB/luma histogram; edge bars mark clipping</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>recommended</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>StorageModel</name>
@@ -315,47 +374,47 @@
     <name>WbModel</name>
     <message>
         <source>Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>Auto</translation>
     </message>
     <message>
         <source>Manual</source>
-        <translation type="unfinished"></translation>
+        <translation>Manuaalinen</translation>
     </message>
     <message>
         <source>Sunlight</source>
-        <translation type="unfinished"></translation>
+        <translation>Auringonvalo</translation>
     </message>
     <message>
         <source>Cloudy</source>
-        <translation type="unfinished"></translation>
+        <translation>Pilvinen</translation>
     </message>
     <message>
         <source>Shade</source>
-        <translation type="unfinished"></translation>
+        <translation>Varjo</translation>
     </message>
     <message>
         <source>Tungsten</source>
-        <translation type="unfinished"></translation>
+        <translation>Keinovalo</translation>
     </message>
     <message>
         <source>Flash</source>
-        <translation type="unfinished"></translation>
+        <translation>Salama</translation>
     </message>
     <message>
         <source>Sunset</source>
-        <translation type="unfinished"></translation>
+        <translation>Auringonlasku</translation>
     </message>
     <message>
         <source>Warm Fluorescent</source>
-        <translation type="unfinished"></translation>
+        <translation>Lämmin fluoresoiva</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>Tuntematon</translation>
     </message>
     <message>
         <source>Fluorescent</source>
-        <translation type="unfinished"></translation>
+        <translation>Fluoresoiva</translation>
     </message>
 </context>
 </TS>

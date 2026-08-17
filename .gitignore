@@ -1,14 +1,35 @@
 /.idea
 /RPMS
-harbour-advanced-camera.pro.user
+harbour-advanced-camera-ext.pro.user
 debugfiles.list
 debuglinks.list
 debugsourcefiles.list
 debugsources.list
 documentation.list
 elfbins.list
-harbour-advanced-camera
+harbour-advanced-camera-ext
 Makefile
 *.o
 *.qm
 moc_*.cpp
+
+# Sailfish SDK / local state
+.mb2/
+installroot/
+build/
+*.rpm
+translations/*.qm
+.qmake.stash
+qrc_*.cpp
+moc_*.h
+
+# Local / private notes — never publish
+CLAUDE.md
+HANDOFF.md
+STATUS.md
+PUBLISH.md
+docs/
+research/
+.claude/
+*.local.sh
+*.log

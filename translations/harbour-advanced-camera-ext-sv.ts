@@ -7,12 +7,20 @@
         <source>Camera: </source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Joining…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Paused</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>CoverPage</name>
     <message>
-        <source>Advanced Camera</source>
-        <translation>Avancerad kamera</translation>
+        <source>Advanced Camera Ext</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -280,10 +288,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Video Bitrate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Audio Bitrate</source>
         <translation type="unfinished"></translation>
     </message>
@@ -301,6 +305,61 @@
     </message>
     <message>
         <source>Display manual controls</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Video bitrate / compression</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 Mbit/s ≈ %2 MB/min</source>
+        <extracomment>%1 Mbit/s video bitrate, %2 resulting file size in MB per minute (video + audio)</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 kbit/s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Microphone gain</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 % (%2 dB)</source>
+        <extracomment>%1 gain in percent, %2 the same in decibels</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Recording at %1 %</source>
+        <extracomment>%1 gain in percent currently applied by PulseAudio to the running recording</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>100 % is the system default. Raise it if videos are too quiet.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Frame rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 fps</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Show histogram</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Live RGB/luma histogram; edge bars mark clipping</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>recommended</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
