@@ -22,10 +22,13 @@
 #include "storagemodel.h"
 #include "exifmodel.h"
 #include "metadatamodel.h"
+#include "micgain.h"
+#include "histogramitem.h"
+#include "videojoiner.h"
 
 int main(int argc, char *argv[])
 {
-    // SailfishApp::main() will display "qml/harbour-advanced-camera.qml", if you need more
+    // SailfishApp::main() will display "qml/harbour-advanced-camera-ext.qml", if you need more
     // control over initialization, you can use:
     //
     //   - SailfishApp::application(int, char *[]) to get the QGuiApplication *
@@ -37,9 +40,30 @@ int main(int argc, char *argv[])
 
     QGuiApplication *app = SailfishApp::application(argc, argv);
 
+    // harbour-advanced-camera-ext --join OUT.mp4 SEG1.mp4 SEG2.mp4 ...
+    if (argc >= 4 && QString::fromLocal8Bit(argv[1]) == QLatin1String("--join")) {
+        VideoJoiner joiner;
+        QStringList segs;
+        for (int i = 3; i < argc; ++i)
+            segs << QString::fromLocal8Bit(argv[i]);
+        int rc = 1;
+        QObject::connect(&joiner, &VideoJoiner::finished, app,
+                         [&](const QString &out, bool ok, const QString &err) {
+                             if (ok)
+                                 qInfo() << "joined into" << out;
+                             else
+                                 qWarning() << "join failed:" << err;
+                             rc = ok ? 0 : 1;
+                             app->quit();
+                         });
+        joiner.join(segs, QString::fromLocal8Bit(argv[2]));
+        app->exec();
+        return rc;
+    }
+
     app->setOrganizationDomain("piggz.co.uk");
     app->setOrganizationName("uk.co.piggz"); // needed for Sailjail
-    app->setApplicationName("AdvancedCamera");
+    app->setApplicationName("AdvancedCameraExt");
 
     qmlRegisterType<EffectsModel>("uk.co.piggz.harbour_advanced_camera", 1, 0, "EffectsModel");
     qmlRegisterType<ExposureModel>("uk.co.piggz.harbour_advanced_camera", 1, 0, "ExposureModel");
@@ -50,6 +74,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<FlashModel>("uk.co.piggz.harbour_advanced_camera", 1, 0, "FlashModel");
     qmlRegisterType<ExifModel>("uk.co.piggz.harbour_advanced_camera", 1, 0, "ExifModel");
     qmlRegisterType<MetadataModel>("uk.co.piggz.harbour_advanced_camera", 1, 0, "MetadataModel");
+    qmlRegisterType<HistogramItem>("uk.co.piggz.harbour_advanced_camera", 1, 0, "HistogramItem");
 
     ResolutionModel resolutionModel;
     QSortFilterProxyModel sortedResolutionModel;
@@ -68,8 +93,12 @@ int main(int argc, char *argv[])
     view->rootContext()->setContextProperty("modelStorage", &storageModel);
     FSOperations fsOperations;
     view->rootContext()->setContextProperty("fsOperations", &fsOperations);
+    MicGain micGain;
+    view->rootContext()->setContextProperty("micGain", &micGain);
+    VideoJoiner videoJoiner;
+    view->rootContext()->setContextProperty("videoJoiner", &videoJoiner);
 
-    view->setSource(SailfishApp::pathTo("qml/harbour-advanced-camera.qml"));
+    view->setSource(SailfishApp::pathTo("qml/harbour-advanced-camera-ext.qml"));
 
     DeviceInfo deviceInfo;
     view->rootContext()->setContextProperty("CameraManufacturer", deviceInfo.manufacturer());

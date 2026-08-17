@@ -1,18 +1,18 @@
 [Desktop Entry]
 Type=Application
 X-Nemo-Application-Type=silica-qt5
-Icon=harbour-advanced-camera
-Exec=harbour-advanced-camera
-Name=Advanced Camera
+Icon=harbour-advanced-camera-ext
+Exec=harbour-advanced-camera-ext
+Name=Advanced Camera Ext
 # translation example:
 # your app name in German locale (de)
 #
 # Remember to comment out the following line, if you do not want to use
 # a different app name in German locale (de).
-#Name[de]=harbour-advanced-camera
-Name[ru]=Улучшенная камера
+#Name[de]=harbour-advanced-camera-ext
+Name[ru]=Улучшенная камера Ext
 
 [X-Sailjail]
 Permissions=Audio;Location;RemovableMedia;Pictures;Videos
 OrganizationName=uk.co.piggz
-ApplicationName=AdvancedCamera
+ApplicationName=AdvancedCameraExt

@@ -1,0 +1,14 @@
+[Unit]
+Description=Overlay libswregistrationalgo.so into /odm/lib64 (Xperia 10 III camera video fix)
+DefaultDependencies=no
+After=local-fs.target
+Before=basic.target
+ConditionPathExists=/data/odmlib/upper/libswregistrationalgo.so
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/bin/camera-swreg-overlay.sh
+
+[Install]
+WantedBy=basic.target

@@ -10,6 +10,6 @@ CoverBackground {
         horizontalAlignment: Text.AlignHCenter
         readOnly: true
         width: parent.width - 2 * Theme.paddingSmall
-        text: qsTr("Advanced Camera")
+        text: qsTr("Advanced Camera Ext")
     }
 }
