@@ -47,3 +47,7 @@ super_out/
 *.ta
 *.map
 *.sin
+
+# Local, host-specific notes (device addresses, paths)
+CLAUDE.local.md
+*.local.md

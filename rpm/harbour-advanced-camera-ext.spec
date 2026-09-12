@@ -4,9 +4,12 @@
 # 
 
 Name:       harbour-advanced-camera-ext
-%define _buildhost reproducible-builder
 
 # >> macros
+# Keep the build machine out of the package. This has to live inside the
+# preserved macros block: mb2 regenerates the spec from the yaml on every
+# build, and anything outside these markers is silently dropped.
+%define _buildhost reproducible-builder
 # << macros
 
 %{!?qtc_qmake:%define qtc_qmake %qmake}
@@ -19,8 +22,6 @@ Release:    1
 Group:      Qt/Qt
 License:    GPLv2
 URL:        https://github.com/JimKnopfIoT/harbour-advanced-camera
-Vendor:     harbour-advanced-camera-ext contributors
-Packager:   harbour-advanced-camera-ext contributors
 Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-advanced-camera-ext.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
