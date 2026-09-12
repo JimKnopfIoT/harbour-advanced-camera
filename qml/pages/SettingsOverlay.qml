@@ -389,7 +389,7 @@ Item {
                         width: parent.width
                         minimumValue: 64000
                         maximumValue: 320000
-                        stepSize: 8-000
+                        stepSize: 8000
                         Text {
                             text: sldAudioBitrate.value
                             anchors.centerIn: parent
