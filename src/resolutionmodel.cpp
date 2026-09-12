@@ -112,16 +112,17 @@ void ResolutionModel::setMode(const QString &mode)
     beginResetModel();
     m_resolutions.clear();
 
-    if (mode == "image") {
-        for (int i = 0; i < m_supportedImageResolutions.count() ; i++) {
-            m_resolutions.push_back(std::make_pair(QString("%1x%2").arg(m_supportedImageResolutions[i].width()).arg(
-                              m_supportedImageResolutions[i].height()), m_supportedImageResolutions[i]));
-        }
-    } else if (mode == "video") {
-        for (int i = 0; i < m_supportedVideoResolutions.count() ; i++) {
-            m_resolutions.push_back(std::make_pair(QString("%1x%2").arg(m_supportedVideoResolutions[i].width()).arg(
-                              m_supportedVideoResolutions[i].height()), m_supportedVideoResolutions[i]));
-        }
+    // The backend may report a size once per supported frame rate / profile
+    // (droidcamsrc lists every video resolution twice); show each size once.
+    const QList<QSize> &source = (mode == "image") ? m_supportedImageResolutions
+                               : (mode == "video") ? m_supportedVideoResolutions
+                                                   : QList<QSize>();
+    QList<QSize> seen;
+    for (const QSize &size : source) {
+        if (seen.contains(size))
+            continue;
+        seen.append(size);
+        m_resolutions.push_back(std::make_pair(QString("%1x%2").arg(size.width()).arg(size.height()), size));
     }
 
     endResetModel();
