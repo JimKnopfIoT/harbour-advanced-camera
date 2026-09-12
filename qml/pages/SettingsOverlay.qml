@@ -374,14 +374,13 @@ Item {
                         id: sldVideoBitrate
                         label: qsTr("Video Bitrate")
                         width: parent.width
-                        minimumValue: 6400000
+                        minimumValue: 1000000
                         maximumValue: 32000000
-                        stepSize: 800000
-                        Text {
-                            text: sldVideoBitrate.value
-                            anchors.centerIn: parent
-                        }
-
+                        stepSize: 200000
+                        //: %1 Mbit/s video bitrate, %2 resulting file size in MB per minute (video + audio)
+                        valueText: qsTr("%1 Mbit/s ≈ %2 MB/min")
+                            .arg((value / 1000000).toFixed(1))
+                            .arg(Math.round((value + sldAudioBitrate.value) * 60 / 8 / 1000000))
                     }
                     Slider {
                         id: sldAudioBitrate
